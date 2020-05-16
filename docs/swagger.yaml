@@ -1,0 +1,120 @@
+basePath: /
+definitions:
+  redis.Request:
+    properties:
+      key:
+        example: test:key
+        type: string
+      options:
+        type: object
+      value:
+        type: object
+    type: object
+  redis.Response:
+    properties:
+      code:
+        example: 200
+        type: integer
+      message:
+        example: Key unavailable
+        type: string
+      status:
+        example: ok
+        type: string
+    type: object
+info:
+  contact: {}
+  description: This is the service to store/retrieve data in Redis. To be used as
+    a cache.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Redis as a Service - API
+  version: "1.0"
+paths:
+  /v1/cache:
+    post:
+      consumes:
+      - application/json
+      description: Sets a redis key with given value as json
+      parameters:
+      - description: Add Key
+        in: body
+        name: cache
+        required: true
+        schema:
+          $ref: '#/definitions/redis.Request'
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/redis.Response'
+      summary: Set a value against a key
+      tags:
+      - cache
+  /v1/cache/{key}:
+    delete:
+      consumes:
+      - application/json
+      description: Deletes a redis key specified
+      parameters:
+      - description: key to be deleted
+        in: path
+        name: key
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/redis.Response'
+      summary: Delete a key
+      tags:
+      - cache
+    get:
+      consumes:
+      - application/json
+      description: Fetch a redis value with key
+      parameters:
+      - description: key to be fetch
+        in: path
+        name: key
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/redis.Response'
+      summary: Get value against a key
+      tags:
+      - cache
+  /v1/cache/pattern/{pattern}:
+    delete:
+      consumes:
+      - application/json
+      description: Deletes a set of keys with a pattern
+      parameters:
+      - description: keyPattern to be deleted
+        in: path
+        name: pattern
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/redis.Response'
+      summary: Deletes a set of keys with a pattern
+      tags:
+      - cache
+swagger: "2.0"

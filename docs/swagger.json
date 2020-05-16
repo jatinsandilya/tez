@@ -1,0 +1,179 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is the service to store/retrieve data in Redis. To be used as a cache.",
+        "title": "Redis as a Service - API",
+        "contact": {},
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
+    },
+    "basePath": "/",
+    "paths": {
+        "/v1/cache": {
+            "post": {
+                "description": "Sets a redis key with given value as json",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "cache"
+                ],
+                "summary": "Set a value against a key",
+                "parameters": [
+                    {
+                        "description": "Add Key",
+                        "name": "cache",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/redis.Request"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/redis.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/cache/pattern/{pattern}": {
+            "delete": {
+                "description": "Deletes a set of keys with a pattern",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "cache"
+                ],
+                "summary": "Deletes a set of keys with a pattern",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "keyPattern to be deleted",
+                        "name": "pattern",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/redis.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/cache/{key}": {
+            "get": {
+                "description": "Fetch a redis value with key",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "cache"
+                ],
+                "summary": "Get value against a key",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "key to be fetch",
+                        "name": "key",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/redis.Response"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Deletes a redis key specified",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "cache"
+                ],
+                "summary": "Delete a key",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "key to be deleted",
+                        "name": "key",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/redis.Response"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "redis.Request": {
+            "type": "object",
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "example": "test:key"
+                },
+                "options": {
+                    "type": "object"
+                },
+                "value": {
+                    "type": "object"
+                }
+            }
+        },
+        "redis.Response": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "example": 200
+                },
+                "message": {
+                    "type": "string",
+                    "example": "Key unavailable"
+                },
+                "status": {
+                    "type": "string",
+                    "example": "ok"
+                }
+            }
+        }
+    }
+}
