@@ -9,7 +9,7 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"bitbucket.org/apps_scootsy/raas/config"
+	"github.com/jatinsandilya/tez/config"
 	"github.com/gomodule/redigo/redis"
 	"github.com/nitishm/go-rejson"
 	"github.com/nitishm/go-rejson/rjs"

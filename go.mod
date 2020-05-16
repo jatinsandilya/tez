@@ -1,4 +1,4 @@
-module bitbucket.org/apps_scootsy/raas
+module github.com/jatinsandilya/tez
 
 go 1.12
 

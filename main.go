@@ -5,7 +5,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	"bitbucket.org/apps_scootsy/raas/server"
+	"github.com/jatinsandilya/tez/server"
 	log "github.com/sirupsen/logrus"
 )
 

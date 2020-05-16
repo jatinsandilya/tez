@@ -9,8 +9,8 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"bitbucket.org/apps_scootsy/raas/config"
-	"bitbucket.org/apps_scootsy/raas/redis"
+	"github.com/jatinsandilya/tez/config"
+	"github.com/jatinsandilya/tez/redis"
 	"github.com/gorilla/mux"
 )
 
