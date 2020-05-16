@@ -1,3 +1,11 @@
+<div align-"center">
+<h1>
+<img src="https://www.dropbox.com/s/eqdm12j8s4k3qm2/stargazer.svg?raw=1" alt="Logo" width="50" style="background: #feeb4e; border-radius:50%;">
+<br/>
+Tez is an HTTP interface for Redis, written in Go
+</h1>
+</div>
+
 #### Steps for running service locally:
 
 Build image:
