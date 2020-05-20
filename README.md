@@ -26,6 +26,6 @@ Run container with image:
 2.  Ensure redis is running locally with `rejson` module. (https://github.com/RedisJSON/RedisJSON)  
 3. `host.docker.internal` resolves to `localhost` 
 
-Check if your running is running on docker with: 
+Check if your service is running on docker with: 
 
 `docker ps` 
